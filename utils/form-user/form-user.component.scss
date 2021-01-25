@@ -1,0 +1,340 @@
+@import "instance";
+$c15:#28b8d4;
+.create_user {
+    @include position;
+    display: block;
+    .porcentage {
+        display: none;
+    }
+    form {
+        color: $c15;
+        margin: 60px auto 0;
+        width: 60%;
+        height: 60%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: "row1c1 row1c2" "row2c1 row2c2" "row3c1 row3c2" "row4c1 row4c2" "row5c1 row4c2" " ..... row6c2";
+        grid-template-rows: minmax(75px, auto);
+        .cam {
+            color: white;
+            text-align: center;
+            p:first-child {
+                color: $c15;
+                width: 100%;
+                height: 16px;
+            }
+            .userName {
+                p {
+                    color: white;
+                }
+            }
+            .upload_take_photo {
+                border-radius: 50%;
+                margin-right: auto;
+                margin-left: auto;
+            }
+        }
+        .btn {
+            margin: auto 0px 0px auto;
+        }
+    }
+}
+
+.cam {
+    .viewUserName {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .create_user {
+        h2 {
+            float: left;
+            font-size: 23px;
+            margin-top: 3rem;
+        }
+        .porcentage {
+            display: flex;
+            float: right;
+        }
+        form {
+            display: grid;
+            grid-template-columns: 50% 50%;
+            width: 100%;
+            padding-bottom: 20px;
+            grid-template-rows: minmax(75px, auto);
+            &.view-display1 {
+                grid-template-areas: " row1c1 row1c1" " row2c1 row2c1" " row3c1 row3c1" " row4c1 row4c1";
+                .row1c2,
+                .row2c2,
+                .row3c2,
+                .row4c2,
+                .row5c1,
+                .row5c2,
+                .row6c2 {
+                    display: none
+                }
+            }
+            &.view-display2 {
+                grid-template-rows: minmax(75px, auto);
+                grid-template-areas: " row5c1 row5c1" " row1c2 row1c2" " row2c2 row2c2" " row4c2 row6c2";
+                .row1c1,
+                .row2c1,
+                .row3c1,
+                .row4c1 {
+                    display: none
+                }
+            }
+            .input {
+                width: 100%;
+            }
+        }
+        .cam {
+            width: max-content;
+            .viewUserName {
+                display: block;
+                width: 40%;
+                .userName {
+                    p {
+                        margin-bottom: 0px;
+                    }
+                }
+            }
+        }
+        .cam.row3c2 {
+            display: none;
+        }
+        .btnNext {
+            display: grid;
+            grid-template-columns: 50% 50%;
+            width: 100%;
+            grid-template-areas: " row1c1 row1c2";
+        }
+    }
+}
+
+//grid
+.row1c1 {
+    grid-area: row1c1;
+}
+
+.row1c2 {
+    grid-area: row1c2;
+}
+
+.row2c1 {
+    grid-area: row2c1;
+}
+
+.row2c2 {
+    grid-area: row2c2;
+}
+
+.row3c1 {
+    grid-area: row3c1;
+}
+
+.row3c2 {
+    grid-area: row3c2;
+}
+
+.row4c1 {
+    grid-area: row4c1;
+}
+
+.row4c2 {
+    grid-area: row4c2;
+}
+
+.row5c1 {
+    grid-area: row5c1;
+}
+
+.row5c2 {
+    grid-area: row5c2;
+}
+
+.row6c2 {
+    grid-area: row6c2;
+}
+
+//label
+label {
+    font-size: 12px;
+}
+
+// select
+.select {
+    border-radius: 5px 5px 0px 0px;
+    width: 100%;
+    height: 33px;
+    // margin-top: 21px;
+    background: $c28;
+    color: white;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+//swich
+.swichC {
+    margin-left: 4%;
+}
+
+// input
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input {
+    border-radius: 5px 5px 0px 0px;
+    width: 100%;
+    background: $c28;
+    color: white;
+    padding-left: 8px;
+    padding-right: 8px;
+    height: 33px;
+    &.ng-invalid.ng-touched {
+        border-style: solid;
+        border-width: 2px;
+        border-color: #ff746e;
+    }
+}
+
+mat-select {
+    &.ng-invalid.ng-touched {
+        border-style: solid;
+        border-width: 2px;
+        border-color: #ff746e;
+    }
+}
+
+input:focus {
+    background: $c13;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #00efe3;
+}
+
+.input {
+    display: block;
+    width: 94%;
+    height: 70px;
+    p {
+        color: #ff746e;
+        font-size: 12px;
+        margin-bottom: 0px;
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px $c28 inset;
+    -moz-box-shadow: 0 0 0px 1000px $c28 inset;
+    -o-box-shadow: 0 0 0px 1000px $c28 inset;
+    box-shadow: 0 0 0px 1000px $c28 inset;
+    -webkit-text-fill-color: white;
+}
+
+.btn {
+    button {
+        clip-path: polygon(21% 0, 100% 0, 74% 100%, 0% 100%);
+        background: #276980;
+        border: 0px;
+        color: white;
+        cursor: pointer;
+        text-align: center;
+        display: block;
+        padding: 3px;
+        width: 145px;
+        font-size: 17px;
+        font-family: "Helvetica", sans-serif;
+        a {
+            font-size: 14px;
+        }
+    }
+}
+
+.btn {
+    button:disabled,
+    button[disabled] {
+        background-color: #276980;
+        opacity: 0.6;
+        color: white;
+        cursor: unset;
+    }
+}
+
+.imgModal {
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 210px;
+}
+
+.btnNext {
+    justify-content: center;
+    display: none;
+    img {
+        width: 31px;
+        height: 35px;
+    }
+    button {
+        background-color: none;
+    }
+}
+
+.btnNext {
+    button:disabled,
+    button[disabled] {
+        opacity: 0.4;
+    }
+}
+
+button {
+    background: none;
+}
+
+.back {
+    grid-area: row1c1;
+    margin-right: 50px;
+    margin-left: auto;
+    width: 40px;
+}
+
+.next {
+    grid-area: row1c2;
+    margin-right: auto;
+    margin-left: 50px;
+    width: 40px;
+}
+
+.next:active {
+    background-color: $c15;
+    border-radius: 50%;
+}
+
+.back:active {
+    background-color: $c15;
+    border-radius: 50%;
+}
+
+.input.centerSelect {
+    padding-top: 21px;
+    select {
+        width: 100%;
+        height: 33px;
+        border-radius: 5px 5px 0px 0px;
+        background: #00404e;
+        color: white;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+}
+
+.text_error {
+    color: $c27;
+    height: 16px;
+    @include font(szrem(12), $f1, 300);
+}

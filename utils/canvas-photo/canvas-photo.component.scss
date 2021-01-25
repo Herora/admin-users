@@ -1,0 +1,47 @@
+@import "instance";
+img {
+    display: none;
+}
+
+canvas {
+    border-radius: 50%;
+}
+
+.border {
+    border: 0.5px solid $c1;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 1px;
+    padding-left: 5px;
+}
+
+button {
+    .icon {
+        // background-color: $c13;
+        height: auto;
+    }
+}
+
+.btns {
+    @include position;
+    @extend %input_1;
+    margin: 10px 0;
+    .icon_1 {
+        &:before {
+            @include transform(translate(0, -50%));
+            left: 10%;
+            top: 44%;
+            height: 31px;
+            width: 31px;
+        }
+    }
+    .icon_2 {
+        &:before {
+            @include transform(translate(0, -50%));
+            left: 80%;
+            top: 44%;
+            height: 31px;
+            width: 31px;
+        }
+    }
+}

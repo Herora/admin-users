@@ -1,0 +1,83 @@
+<div class="create_user">
+    <h1 id="h--title-user" class="title_component">{{header | translate}}</h1>
+    <div id="d--porcentage-user" class="porcentage">
+        <app-circle id="app--circle-porcentage-user" [porcentage]='porcentage'></app-circle>
+    </div>
+    <form novalidate [formGroup]="user" id="form-user" class="{{responsive()}}" #form="ngForm">
+        <div class="input row1c1">
+            <label id="lbl--document-typedocument-type-user">{{ 'DOCUMENTTYPE' | translate }}*</label>
+            <mat-select id="sl--select-document-type-user" [disableRipple]="true" [disableOptionCentering]="true" panelClass="panel" class="select" placeholder="" formControlName="identificationTypeId">
+                <div class="mat-option-class">
+                    <mat-option id="opt--tittle-document-type-user" class="tittle">{{ 'DOCUMENTTYPE' | translate }}</mat-option>
+                    <mat-option id="opt--description-document-type-user" class="mat-option" *ngFor="let item of identificationType" [value]="item.id">
+                        {{item.abbreviation}} {{item.description}}
+                    </mat-option>
+                </div>
+            </mat-select>
+            <p id="p--required-identification-type-user" *ngIf="user.get('identificationTypeId').hasError('required') && user.get('identificationTypeId').touched">* Campo requerido</p>
+        </div>
+        <div class="input row1c2">
+            <label id="lbl--phone-user">{{ 'PHONE' | translate }}*</label>
+            <input id="ipt--phone-user" type="text" name="phone" minlength="5" maxlength="30" formControlName="phone" (keypress)="validateInput('phone')" (keyup)="validateInput('phone')" (keydown)="validateInput('phone')" (focus)="validateInput('phone')">
+            <p id="p--required-phone-user" *ngIf="user.get('phone').hasError('required') && user.get('phone').touched">* Campo requerido</p>
+        </div>
+        <div class="input row2c1">
+            <label id="lbl--identification-number-user">Documento*</label>
+            <input id="ipt--identification-number-user" type="text" name="identificationNumber" minlength="3" maxlength="30" formControlName="identificationNumber" (keypress)="validateInput('identificationNumber')" (keyup)="validateInput('identificationNumber')" (keydown)="validateInput('identificationNumber')">
+            <p id="p--required-identification-number-user" *ngIf="user.get('identificationNumber').hasError('required') && user.get('identificationNumber').touched">* Campo requerido</p>
+        </div>
+        <div class="input row2c2">
+            <label id="lbl--select-rol-user">Selecciona uno o mas roles*</label>
+            <mat-select #sl id="sl--select-rol-user" [disableRipple]="true" [disableOptionCentering]="true" panelClass="selectRol" class="select" placeholder="" formControlName="rolesList" multiple>
+                <div class="mat-option-class">
+                    <mat-option class="mat-option" id="opt--rol-description-user" *ngFor="let filters of roles" [value]="filters.id">
+                        {{filters.description}}
+                    </mat-option>
+                </div>
+            </mat-select>
+            <p id="p--required-roles-list-user" *ngIf="user.get('rolesList').hasError('required') && user.get('rolesList').touched">* Campo requerido</p>
+        </div>
+        <div class="input row3c1">
+            <label id="lbl--names-user">Nombres*</label>
+            <input id="ipt--names-user" type="text" name="names" maxlength="30" minlength="1" class="user.get('surnames').invalid ? 'error-menssaje' : 'hola'" formControlName="names" (keyup)='createUserName()' (keypress)="validateInput('names')" (keyup)="validateInput('names')"
+                (keydown)="validateInput('names')" (focus)="validateInput('names')">
+            <p id="p--required-names-user" *ngIf="user.get('names').hasError('required') && user.get('names').touched">{{ errorHandler('names') | translate }}</p>
+        </div>
+        <div class="input row4c1">
+            <label id="lbl--surnames-user">Apellidos*</label>
+            <input id="ipt--surnames-user" (blur)="validateUserName()" type="text" name="surnames" maxlength="30" minlength="1" formControlName="surnames" (keyup)='createUserName()' (keyup)="validateInput('surnames')" (keydown)="validateInput('surnames')" (focus)="validateInput('surnames')">
+            <p id="p--required-surnames-user" *ngIf="user.get('surnames').hasError('required') && user.get('surnames').touched">* Campo requerido</p>
+        </div>
+        <div class="input  row5c1">
+            <label id="lbl--email-user">Correo electronico*</label>
+            <input id="ipt--email-user" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="email" name="email" formControlName="email">
+            <p id="p--valid-email-user" *ngIf="user.get('email').hasError('pattern')">Ingresa un correo válido.</p>
+            <p id="p--required-email-user" *ngIf="user.get('email').hasError('required') && user.get('email').touched">* Campo requerido</p>
+        </div>
+        <div class="cam row3c2">
+            <p id="p--username1-user">Usuario</p>
+            <div class="userName">
+                <p id="p--required-username1-user">{{userName}}</p>
+            </div>
+        </div>
+        <div class="cam row4c2 ">
+            <app-upload-take-photo id="app--upload-photo-user" [disabledUserForm]="buttonName" (resultImage)='imgOuput($event)' [imageResult]='image'></app-upload-take-photo>
+            <div class="viewUserName">
+                <div class="userName">
+                    <p id="p--username2-user">{{userName}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="btn row6c2" *ngIf="buttonName">
+            <button id="btn--save-user" [disabled]="user.invalid" (click)='sendUser()' type="submit">{{buttonName}}</button>
+        </div>
+    </form>
+    <div class="btnNext">
+        <button id="btn--back-user" *ngIf="back" class="back" (click)="backform()">
+            <img id="img--back-user" src="assets/icons/backW.svg" class="svgclass" width="106px" height="122px" alt="next">
+        </button>
+        <button id="btn--next-user" *ngIf="next" class="next" (click)="nextform()" [disabled]="validateFormDisplay1()">
+            <img id="img--next-user" src="assets/icons/nextW.svg" class="svgclass" width="106px" height="122px" alt="next">
+        </button>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+    .form-group {
+        label {
+            background: #00404e;
+            display: flex;
+            justify-content: center;
+            padding: 5px 10px 5px 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        input {
+            display: none;
+        }
+    }
+    
+    .viewPhoto {
+        border-radius: 50%;
+        width: 14em;
+        height: 14em;
+    }
+    
+    .imgDu {
+        pointer-events: none;
+        display: flex;
+        margin-bottom: 20px;
+    }
+    
+    button {
+        .icon {
+            background-color: #002d3a;
+            height: auto;
+        }
+    }
+    
+    .button {
+        clip-path: polygon(21% 0, 100% 0, 74% 100%, 0% 100%);
+        background: #276980;
+        border: 0px;
+        color: white;
+        cursor: pointer;
+        text-align: center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 3px;
+        width: 145px;
+        font-size: 17px;
+        font-family: "Helvetica", sans-serif;
+        margin-top: 11%;
+        margin-bottom: 13%;
+        a {
+            font-size: 14px;
+        }
+    }

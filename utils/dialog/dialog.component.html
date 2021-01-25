@@ -1,0 +1,29 @@
+<div mat-dialog-actions class="navbarDialog">
+    <h2 id="h--title-add-photo-user">Agrega foto de perfil</h2>
+    <button id="btn--close-photo-user" mat-button (click)="onNoClick()"><mat-icon class="icon" svgIcon="Xclose"></mat-icon></button>
+</div>
+<div mat-dialog-content class="contentDialog">
+
+    <div *ngIf="actionPhoto === 'UploadPhoto'">
+        <img id="img--upload-photo-user" src="{{imgDefaultView}}" alt="" class="imgDu" *ngIf="imgDefaultUpload">
+        <div>
+            <app-canvas-photo id="app--canvas-photo-user" (resultImage)='uploadImage($event)' [image]='image' *ngIf="image"></app-canvas-photo>
+        </div>
+        <div class="form-group">
+            <label id="lbl--upload-photo-user" for="ipt--upload-photo-user">Selecciona una foto</label>
+            <input id="ipt--upload-photo-user" type="file" accept="image/*" (change)="uploadPhoto($event)">
+        </div>
+    </div>
+
+    <div *ngIf="actionPhoto === 'TakePhoto'">
+        <app-cam id="app--take-photo-user" (resultImage)='uploadImage($event)'></app-cam>
+    </div>
+
+    <div *ngIf="actionPhoto === 'ViewPhoto'">
+        <img id="img--take-photo-user" src="{{image2}}" alt="" class="viewPhoto" *ngIf="imgDefaultUpload">
+    </div>
+
+</div>
+<div mat-dialog-actions class="footerDialog">
+    <button id="btn--send-photo-user" class="button" type="button" (click)="sendPhoto()">Guardar</button>
+</div>

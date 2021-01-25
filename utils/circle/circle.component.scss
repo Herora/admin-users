@@ -1,0 +1,151 @@
+// -- vars
+$bg-color: #34495e;
+$default-size: 1em;
+$label-font-size: $default-size / 4;
+$label-font-size-redo: $default-size * 4;
+// -- mixins
+@mixin size($width, $height) {
+    height: $height;
+    width: $width;
+}
+
+@mixin draw-progress($progress, $color) {
+    .pie {
+        .half-circle {
+            border-color: $color;
+        }
+        .left-side {
+            transform: rotate($progress * 3.6deg);
+        }
+        @if $progress <=50 {
+            .right-side {
+                display: none;
+            }
+        }
+        @else {
+            clip: rect(auto, auto, auto, auto);
+            .right-side {
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
+
+@mixin draw-progress--solid($progress, $color, $bg-color) {
+    background: linear-gradient(to right, $color 50%, $bg-color 50%);
+    &:before {
+        @if $progress <=50 {
+            background: $bg-color;
+            transform: rotate((100 - (50 - $progress)) / 100 * 360deg * -1);
+        }
+        @else {
+            background: $color;
+            transform: rotate((100 - $progress) / 100 * 360deg);
+        }
+    }
+}
+
+// -- selectors
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+.set-size {
+    font-size: 6rem;
+}
+
+.charts-container {
+    &:after {
+        clear: both;
+        content: '';
+        display: table;
+    }
+}
+
+.pie-wrapper {
+    @include size($default-size, $default-size);
+    float: left;
+    margin: 15px;
+    position: relative;
+    &:nth-child(3n + 1) {
+        clear: both;
+    }
+    .pie {
+        @include size(100%, 100%);
+        clip: rect(0, $default-size, $default-size, $default-size / 2);
+        left: 0;
+        position: absolute;
+        top: 0;
+        .half-circle {
+            @include size(100%, 100%);
+            border: ($default-size / 10) solid #3498db;
+            border-radius: 50%;
+            clip: rect(0, $default-size / 2, $default-size, 0);
+            left: 0;
+            position: absolute;
+            top: 0;
+        }
+    }
+    .label {
+        background: $bg-color;
+        border-radius: 50%;
+        bottom: $label-font-size-redo / 10;
+        color: #ecf0f1;
+        cursor: default;
+        display: block;
+        font-size: $label-font-size;
+        left: $label-font-size-redo / 10;
+        line-height: $label-font-size-redo * .70;
+        position: absolute;
+        right: $label-font-size-redo / 10;
+        text-align: center;
+        top: $label-font-size-redo / 10;
+        .smaller {
+            color: #bdc3c7;
+            font-size: .45em;
+            padding-bottom: 20px;
+            vertical-align: super;
+        }
+    }
+    .shadow {
+        @include size(100%, 100%);
+        border: $default-size / 10 solid #ffff;
+        border-radius: 50%;
+    }
+    &.style-2 {
+        .label {
+            background: none;
+            color: white;
+            .smaller {
+                color: #bdc3c7;
+            }
+        }
+    }
+    &.progress-0 {
+        @include draw-progress(0, #ffff);
+    }
+    &.progress-50 {
+        @include draw-progress(50, #ff8E00);
+    }
+    &.progress-100 {
+        @include draw-progress(100, #ff8E00);
+    }
+}
+
+.pie-wrapper--solid {
+    border-radius: 50%;
+    overflow: hidden;
+    &:before {
+        border-radius: 0 100% 100% 0 / 50%;
+        content: '';
+        display: block;
+        height: 100%;
+        margin-left: 50%;
+        transform-origin: left;
+    }
+    .label {
+        background: transparent;
+    }
+}

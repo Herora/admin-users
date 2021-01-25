@@ -1,0 +1,2 @@
+<app-form-user (formUser)='formUser($event)' [userForm]='user' [IsNew]='false' (resultForm)='updateUser($event)' [successful]='successful' [header]='header' [buttonName] = 'buttonName' *ngIf = 'user'></app-form-user>
+<app-modal-notification [modalNotification]='modal' *ngIf="modal.actionModal"></app-modal-notification>

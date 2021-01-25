@@ -1,0 +1,16 @@
+<app-filter class="filter" (responseFilter)='searchFilter($event)' id="app--filter-user">
+    <div content>
+        <app-autocomplete *ngFor="let data of dataIds" [dataId]="data.id" (responseAutocomplete)='searchFilter($event)'></app-autocomplete>
+        <div class="filter_state">
+            <app-statefilter class="state"></app-statefilter>
+        </div>
+    </div>
+    <div footer class="footer_button">
+        <div class="button_filter">
+            <button id="btn--search-filter-user" class="search">Buscar</button>
+            <button id="btn--delete-filter-user" class="delete_filter">Borrar Filtros</button>
+        </div>
+    </div>
+</app-filter>
+<app-bitstable (responseAction)='action($event)' class="admin-container"></app-bitstable>
+<app-modal-notification [modalNotification]='modal' *ngIf="modal.actionModal"></app-modal-notification>

@@ -1,0 +1,41 @@
+@import "instance";
+.admin-container {
+    display: flex;
+    margin-top: 63px;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_filter {
+    display: block;
+    margin-top: 80px;
+    .filter_state {
+        @include flex;
+        @include align-items(center);
+        @include justify-content(center);
+        height: 28px;
+        margin-top: 30px;
+        .state {
+            display: block;
+        }
+    }
+    .footer_button {
+        display: flex;
+        justify-content: flex-end;
+        .button_filter {
+            display: flex;
+            button {
+                @include button_1((width: 176px, colorhover: $c12));
+                @include font(szrem(16), $f1, normal);
+                position: relative;
+                &.search {
+                    z-index: 2;
+                    left: 33px;
+                }
+                &.delete_filter {
+                    z-index: 1;
+                }
+            }
+        }
+    }
+}

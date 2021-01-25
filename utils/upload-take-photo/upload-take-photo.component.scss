@@ -1,0 +1,37 @@
+.photo {
+    width: 100%;
+}
+
+.photo {
+    mat-menu-content {
+        top: 50%;
+        position: absolute;
+        display: block;
+        left: 67%;
+    }
+}
+
+.cam {
+    img {
+        width: 8em;
+        height: 8em;
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 50%;
+    }
+}
+
+.radius {
+    background: #001c25;
+    display: table-cell;
+}
+
+@media screen and (max-width: 576px) {
+    .cam {
+        img {
+            width: 5em;
+            height: 5em;
+        }
+    }
+}

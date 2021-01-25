@@ -1,0 +1,160 @@
+.create_user {
+    p:first-child {
+        color: white;
+        float: right;
+    }
+    form {
+        width: 80%;
+        color: #28b8d4;
+        margin: auto;
+        height: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .left {
+        width: 50%;
+        justify-content: center;
+        .input {
+            display: block;
+            width: 80%;
+            margin: auto;
+            margin-top: 30px;
+        }
+    }
+    .cam {
+        display: block;
+        width: 50%;
+        color: white;
+        text-align: center;
+        p:first-child {
+            color: #28b8d4;
+            width: 100%;
+            height: 16px;
+        }
+        .userName {
+            p {
+                color: white;
+            }
+        }
+    }
+}
+
+//label
+label {
+    font-size: 12px;
+}
+
+// select
+.select {
+    width: 100%;
+    height: 30px;
+    margin-top: 19px;
+    background: #00404e;
+    color: white;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+// input
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input {
+    width: 100%;
+    background: #00404e;
+    color: white;
+    padding-left: 8px;
+    padding-right: 8px;
+    height: 30px;
+}
+
+input:focus {
+    background: #002d3a;
+}
+
+.input {
+    display: block;
+    width: 40%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 30px;
+}
+
+.left {
+    justify-content: center;
+    width: 50%;
+    display: block;
+    margin-bottom: 40px;
+    .input {
+        width: 80%;
+        margin: 20px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .create_user {
+        form {
+            width: 100%;
+            margin: 0px;
+            .input {
+                width: 100%;
+            }
+        }
+        .left {
+            width: 100%;
+            .input {
+                width: 90%;
+            }
+        }
+        .cam {
+            width: 100%;
+        }
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #00404e inset;
+    -moz-box-shadow: 0 0 0px 1000px #00404e inset;
+    -o-box-shadow: 0 0 0px 1000px #00404e inset;
+    box-shadow: 0 0 0px 1000px #00404e inset;
+    -webkit-text-fill-color: white;
+}
+
+button {
+    clip-path: polygon(21% 0, 100% 0, 74% 100%, 0% 100%);
+    background: #276980;
+    border: 0px;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: 5%;
+    padding: 3px;
+    width: 145px;
+    font-size: 17px;
+    font-family: "Helvetica", sans-serif;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    a {
+        font-size: 14px;
+    }
+}
+
+button:disabled,
+button[disabled] {
+    background-color: #276980;
+    opacity: 0.6;
+    color: white;
+    cursor: unset;
+}
+
+.question {
+    padding: 20px;
+}
+
+.ctn-img {
+    text-align: center;
+}
